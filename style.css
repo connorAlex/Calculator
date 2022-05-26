@@ -1,0 +1,39 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+.calc{
+    margin-top: 20%;
+    height:450px;
+    width:300px;
+    background-color:green;
+    display:flex;
+    flex-direction: column;
+    border:solid;
+    border-width: 2px;
+    border-color: black;
+    
+}
+.display{
+    display:flex;
+    height:100px;
+    width:280px;
+    background-color: blue;
+    align-self: center;
+    justify-content: center;
+    margin-top: 10px;
+}
+.buttons{
+    display:flex;
+    flex-direction: column;
+}
+.input{
+    display:flex;
+    justify-content: center;
+    gap: 10px;
+}
+.operators{
+    display:flex;
+    flex-direction: column;
+}
