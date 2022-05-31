@@ -5,7 +5,7 @@ body{
 }
 .calc{
     margin-top: 20%;
-    height:450px;
+    height:550px;
     width:300px;
     background-color:beige;
     justify-content: center;
@@ -31,11 +31,29 @@ body{
     display:flex;
     flex-wrap: wrap;
     justify-content:center;
-    margin-top: 30px;
     gap: 10px;
     
 }
 button{
     padding: 20px 25px;
     border-radius: 5px;
+}
+.backButtons{
+    display:flex;
+    flex-shrink:0;
+    justify-content: space-evenly;
+    gap: 10px;
+    margin-inline-start: 11px;
+    margin-inline-end: 10px;
+}
+.backBtn1, .backBtn2{
+    margin-bottom: 10px;
+    
+}
+.backBtn1{
+    padding: 20px 50px;
+
+}
+.backBtn2{
+    padding: 20px 45px;
 }
