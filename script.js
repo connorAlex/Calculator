@@ -11,6 +11,8 @@ let clearBtn = document.querySelector(".backBtn1");
 let del = document.querySelector(".backBtn2");
 
 
+window.addEventListener("keydown",operatorKey);
+
 clearBtn.addEventListener("click",clear);
 del.addEventListener("click", deleteDigit);
 btns.forEach(btns => btns.addEventListener('click', numEvent));
@@ -21,6 +23,7 @@ operatorList.forEach( operatorList => operatorList.addEventListener('click', fun
 equals.addEventListener("click", operate);
 
 function operate(){
+    //todo--scrub all non numerical values from digit.value (regex?)
     let funct = cached.innerHTML + " " + digit.value;
     cached.innerHTML = funct + " =";
     digit.value = parseCalc(funct);
@@ -49,4 +52,13 @@ function clear(){
 function deleteDigit(){
     let output = digit.value.slice(0,-1);
     digit.value = output;
+}
+
+function operatorKey(e){
+    let key = e.key;
+    let symbols = ['*','+','/','(',')','.','-', '='];
+    if (isNaN(Number(key)) && symbols.includes(key) === false){
+        e.preventDefault();
+        
+    }
 }
