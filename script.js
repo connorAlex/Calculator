@@ -7,7 +7,12 @@ let cached = document.querySelector(".history");
 let digit = document.querySelector(".numDisplay");
 let equals = document.querySelector(".equals");
 let calcComplete = false;
+let clearBtn = document.querySelector(".backBtn1");
+let del = document.querySelector(".backBtn2");
 
+
+clearBtn.addEventListener("click",clear);
+del.addEventListener("click", deleteDigit);
 btns.forEach(btns => btns.addEventListener('click', numEvent));
 operatorList.forEach( operatorList => operatorList.addEventListener('click', function() {
     cache(digit.innerHTML,operatorList.value);
@@ -34,4 +39,15 @@ function cache(num,op){
     let cachFunc = num + " " + op;
     cached.innerHTML = cachFunc;
     digit.innerHTML = "";
+}
+
+function clear(){
+    digit.innerHTML = "";
+    cached.innerHTML = "";
+}
+
+function deleteDigit(){
+    let output = digit.innerHTML.slice(0,-1);
+    console.log(output);
+    digit.innerHTML = output;
 }
