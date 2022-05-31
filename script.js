@@ -15,15 +15,15 @@ clearBtn.addEventListener("click",clear);
 del.addEventListener("click", deleteDigit);
 btns.forEach(btns => btns.addEventListener('click', numEvent));
 operatorList.forEach( operatorList => operatorList.addEventListener('click', function() {
-    cache(digit.innerHTML,operatorList.value);
+    cache(digit.value,operatorList.value);
 }));
 
 equals.addEventListener("click", operate);
 
 function operate(){
-    let funct = cached.innerHTML + " " + digit.innerHTML;
+    let funct = cached.innerHTML + " " + digit.value;
     cached.innerHTML = funct + " =";
-    digit.innerHTML = parseCalc(funct);
+    digit.value = parseCalc(funct);
 }
 
 function parseCalc(calc){
@@ -31,23 +31,22 @@ function parseCalc(calc){
 }
 
 function numEvent(e) {
-    digit.innerHTML += e.target.value;
+    digit.value += e.target.value;
 }
 
 function cache(num,op){
     //build the string to be executed by the parseCalc function
     let cachFunc = num + " " + op;
     cached.innerHTML = cachFunc;
-    digit.innerHTML = "";
+    digit.value = "";
 }
 
 function clear(){
-    digit.innerHTML = "";
+    digit.value = "";
     cached.innerHTML = "";
 }
 
 function deleteDigit(){
-    let output = digit.innerHTML.slice(0,-1);
-    console.log(output);
-    digit.innerHTML = output;
+    let output = digit.value.slice(0,-1);
+    digit.value = output;
 }

@@ -27,6 +27,9 @@ body{
     background-color: white;
     
 }
+.numDisplay{
+    text-align: right;
+}
 .input{
     display:flex;
     flex-wrap: wrap;
