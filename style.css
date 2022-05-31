@@ -28,8 +28,11 @@ body{
     
 }
 .numDisplay{
+    all:unset;
     text-align: right;
+    caret-color: transparent;
 }
+
 .input{
     display:flex;
     flex-wrap: wrap;
