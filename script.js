@@ -17,16 +17,16 @@ clearBtn.addEventListener("click",clear);
 del.addEventListener("click", deleteDigit);
 btns.forEach(btns => btns.addEventListener('click', numEvent));
 operatorList.forEach( operatorList => operatorList.addEventListener('click', function() {
-    cache(digit.value,operatorList.value);
+    cache(operatorList.value);
 }));
 
-equals.addEventListener("click", operate);
+equals.addEventListener("click", function () {operate(digit.value)});
 
-function operate(){
-    //todo--scrub all non numerical values from digit.value (regex?)
-    let funct = cached.innerHTML + " " + digit.value;
+function operate(value){
+    let funct = cached.innerHTML + " " + value;
     cached.innerHTML = funct + " =";
     digit.value = parseCalc(funct);
+    
 }
 
 function parseCalc(calc){
@@ -37,9 +37,9 @@ function numEvent(e) {
     digit.value += e.target.value;
 }
 
-function cache(num,op){
+function cache(op){
     //build the string to be executed by the parseCalc function
-    let cachFunc = num + " " + op;
+    let cachFunc = digit.value + " " + op;
     cached.innerHTML = cachFunc;
     digit.value = "";
 }
@@ -56,9 +56,18 @@ function deleteDigit(){
 
 function operatorKey(e){
     let key = e.key;
-    let symbols = ['*','+','/','(',')','.','-', '='];
+    let symbols = ['*','+','/','.','-'];
     if (isNaN(Number(key)) && symbols.includes(key) === false){
         e.preventDefault();
+    }
+    if (key === "Enter"){
+        console.log("asdf");
+        operate(digit.value);
         
     }
+    if (symbols.includes(key) === true){
+        cache(key);
+        e.preventDefault();
+    }
+    
 }
