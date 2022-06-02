@@ -56,6 +56,7 @@ function deleteDigit(){
 
 function operatorKey(e){
     let key = e.key;
+    console.log(key)
     let symbols = ['*','+','/','.','-'];
     if (isNaN(Number(key)) && symbols.includes(key) === false){
         e.preventDefault();
@@ -65,9 +66,13 @@ function operatorKey(e){
         operate(digit.value);
         
     }
+    if (key === "Backspace"){
+        deleteDigit();
+    }
     if (symbols.includes(key) === true){
         cache(key);
         e.preventDefault();
     }
+    
     
 }

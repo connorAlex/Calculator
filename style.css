@@ -21,7 +21,6 @@ body{
     justify-content: space-between;
     align-items: flex-end;
     margin: 10px;
-    
     height:120px;
     width:280px;
     background-color: white;
@@ -38,7 +37,6 @@ body{
     flex-wrap: wrap;
     justify-content:center;
     gap: 10px;
-    
 }
 button{
     padding: 20px 25px;
