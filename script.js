@@ -25,11 +25,23 @@ equals.addEventListener("click", function () {operate(digit.value)});
 function operate(value){
     let funct = cached.innerHTML + " " + value;
     cached.innerHTML = funct + " =";
-    digit.value = parseCalc(funct);
+    let output = parseCalc(funct);
+    if (output === "error"){
+        digit.value = "";
+        cached.innerHTML = "";
+    }
+    else{
+        digit.value = parseCalc(funct);
+    }
+    
     
 }
 
 function parseCalc(calc){
+    
+    if (calc.includes("\ 0") || calc.includes("/0")){
+        return "error";
+    }
     return new Function ('return ' + calc)();
 }
 
