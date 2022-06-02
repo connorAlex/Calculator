@@ -23,19 +23,31 @@ operatorList.forEach( operatorList => operatorList.addEventListener('click', fun
 
 //  Functions
 
-
 function operate(value){
     let funct = cached.innerHTML + " " + value;
     cached.innerHTML = funct + " =";
-    let output = parseCalc(funct);
-    if (output === "error"){
+    let output = "";
+    try{
+        output = parseCalc(funct);
+    }
+    catch{
         digit.value = "";
         cached.innerHTML = "";
     }
-    else{
-        digit.value = parseCalc(funct);
+    finally{
+        if (output === "error"){
+            digit.value = "";
+            cached.innerHTML = "";
+        }
+        else if (output.toString().length > 9){
+            console.log(output.toString().length);
+            digit.value = output.toExponential(5);
+        }
+        else{
+            digit.value = output;
+        }
     }
-    
+   
     
 }
 
@@ -44,7 +56,6 @@ function parseCalc(calc){
     //Safety measures are taken place in operatorKey()
 
     if (calc.includes("/ 0") || calc.includes("/ 0")){
-        console.log("div 0");
         return "error";
     }
     return new Function ('return ' + calc)();
@@ -55,7 +66,6 @@ function numEvent(e) {
     if (!num.includes(".") || e.target.value !== "."){
         digit.value += e.target.value;
     }
-    
 }
 
 function cache(op){
@@ -68,6 +78,7 @@ function cache(op){
 function clear(){
     digit.value = "";
     cached.innerHTML = "";
+    
 }
 
 function deleteDigit(){
@@ -80,13 +91,16 @@ function operatorKey(e){
     let symbols = ['*','+','/','-','.'];
     let hasPeriod = digit.value.includes(".");
 
-    console.log(hasPeriod);
 
     //verify the key is either a number or selected symbol
     if (isNaN(Number(key)) && symbols.includes(key) === false || e.keyCode === 32){
         e.preventDefault();
     }
     if (hasPeriod === true && key === "."){
+        e.preventDefault();
+    }
+    
+    if (digit.value.length === 9){
         e.preventDefault();
     }
     if (key === "Enter"){
@@ -98,6 +112,7 @@ function operatorKey(e){
     if (symbols.includes(key) === true){
         if (key !== "."){
             cache(key);
+            e.preventDefault();
         }
     }
     

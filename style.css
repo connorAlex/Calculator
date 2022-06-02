@@ -1,37 +1,53 @@
 body{
     display: flex;
+    font-family: Helvetica, sans-serif;
+    flex-flow: column wrap;
     justify-content: center;
     align-content: center;
+    background-color: #CDDDDD;
+    text-align: center;
+}
+.header{
+    margin-top: 20%;
 }
 .calc{
-    margin-top: 20%;
+    margin-top: 20px;
     height:500px;
     width:300px;
-    background-color:beige;
+    background-color: #ACBDBA;
     justify-content: center;
     align-items: center;
     border:solid;
     border-width: 2px;
-    border-color: black;
+    border-color: #051014;
+    border-radius: 5px;
     
 }
 .display{
     display:flex;
     flex-direction: column;
     justify-content: space-between;
+    align-content:stretch;
     align-items: flex-end;
+    flex:wrap;
     margin: 10px;
-    height:120px;
-    width:280px;
-    background-color: white;
-    
+    height: 120px;
+    width: 280px;
+    background-color: #ACBDBA;
 }
 .numDisplay{
+    flex:1;
     all:unset;
     text-align: right;
     caret-color: transparent;
+    font-size: 40px;
+    padding: 10px;
+    width: 255px;
 }
-
+.history{
+    font-size: 20px;
+    padding: 10px;
+}
 .input{
     display:flex;
     flex-wrap: wrap;
@@ -41,23 +57,26 @@ body{
 button{
     padding: 20px 25px;
     border-radius: 5px;
+    background-color: #A599B5;
+    color: #2E2F2F;
+    border-color: #051014;
+    font-weight: bold;
+    font-size: 15px;
+    width:60px;
+    height:60px;
 }
+
 .backButtons{
     display:flex;
     flex-shrink:0;
     justify-content: space-evenly;
-    gap: 10px;
-    margin-inline-start: 11px;
-    margin-inline-end: 10px;
 }
 .backBtn1, .backBtn2{
     margin-bottom: 10px;
-    
+    font-size: 16px;
+    width: 7em;
 }
-.backBtn1{
-    padding: 20px 50px;
 
-}
-.backBtn2{
-    padding: 20px 45px;
+footer{
+    margin: 10px;
 }

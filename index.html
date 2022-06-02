@@ -5,42 +5,59 @@
         <link rel = "stylesheet" href = "style.css">
     </head>
     <body>
+        <div class = "header">
+            <h1>calculate.</h1>
+        </div>
         <div class = "calc">
             
             <div class = "display">
                 <div class = "history"></div>
-                <input type = "text" onblur = "this.focus()" autofocus class = "numDisplay"></input>
+                <div>
+                    <input type = "text" onblur = "this.focus()" autofocus class = "numDisplay">
+                </div>
                 
             </div>
+
             <div class = "backButtons">
                 <button class = "backBtn1">clear</button>
                 <button class = "backBtn2">delete</button>
             </div>
+
             <div class = "input">
                 
-                <button class = "num" value = 7>7</button>
-                <button class = "num" value = 8>8</button>
-                <button class = "num" value = 9>9</button>
-                <button class = "op" value = "/" >/</button>
-
-                <button class = "num" value = 4>4</button>
-                <button class = "num" value = 5>5</button>
-                <button class = "num" value = 6>6</button>
-                <button class = "op" value = "*">  *</button>
-    
-                <button class = "num" value = 1>1</button>
-                <button class = "num" value = 2>2</button>
-                <button class = "num" value = 3>3</button>
-                <button class = "op" value = "-">-</button>
+                <div>
+                    <button class = "num" value = 7>7</button>
+                    <button class = "num" value = 8>8</button>
+                    <button class = "num" value = 9>9</button>
+                    <button class = "op" value = "/" >/</button>
+                </div>
                 
-                <button class = "num" value = ".">.</button>
-                <button class = "num" value = 0>0</button>
-                <button class = "equals" value = "=">=</button>
-                <button class = "op" value = "+">+</button>      
+                <div>
+                    <button class = "num" value = 4>4</button>
+                    <button class = "num" value = 5>5</button>
+                    <button class = "num" value = 6>6</button>
+                    <button class = "op" value = "*">  *</button>
+                </div>
 
+                <div>
+                    <button class = "num" value = 1>1</button>
+                    <button class = "num" value = 2>2</button>
+                    <button class = "num" value = 3>3</button>
+                    <button class = "op" value = "-">-</button>
+                </div>
+
+                <div>
+                    <button class = "num" value = ".">.</button>
+                    <button class = "num" value = 0>0</button>
+                    <button class = "equals" value = "=">=</button>
+                    <button class = "op" value = "+">+</button>   
+                </div>
+                
+    
                
             </div>
         </div>
     </body>
+    <footer>Created By <a href = "https://github.com/connorAlex">Connor Cochrane</a></footer>
     <script src = "script.js"></script>
 </html>
