@@ -1,26 +1,28 @@
-//add event listener to "collect" digits for the first number
-//once operator is pressed, the first digit is passed to another var and the next digit is calculated
+
+//  Odin Project Calculator
 
 let btns = document.querySelectorAll(".num");
 let operatorList = document.querySelectorAll(".op");
 let cached = document.querySelector(".history");
 let digit = document.querySelector(".numDisplay");
 let equals = document.querySelector(".equals");
-let calcComplete = false;
 let clearBtn = document.querySelector(".backBtn1");
 let del = document.querySelector(".backBtn2");
 
-
+//add event listeners
 window.addEventListener("keydown",operatorKey);
-
 clearBtn.addEventListener("click",clear);
 del.addEventListener("click", deleteDigit);
+equals.addEventListener("click", function () {operate(digit.value)});
+
+//forEach to add to buttons 0-9
 btns.forEach(btns => btns.addEventListener('click', numEvent));
 operatorList.forEach( operatorList => operatorList.addEventListener('click', function() {
     cache(operatorList.value);
 }));
 
-equals.addEventListener("click", function () {operate(digit.value)});
+//  Functions
+
 
 function operate(value){
     let funct = cached.innerHTML + " " + value;
@@ -38,7 +40,9 @@ function operate(value){
 }
 
 function parseCalc(calc){
-    
+    //calculate the entered string as real function. 
+    //Safety measures are taken place in operatorKey()
+
     if (calc.includes("\ 0") || calc.includes("/0")){
         return "error";
     }
@@ -46,6 +50,7 @@ function parseCalc(calc){
 }
 
 function numEvent(e) {
+    //append digit
     digit.value += e.target.value;
 }
 
@@ -68,15 +73,14 @@ function deleteDigit(){
 
 function operatorKey(e){
     let key = e.key;
-    console.log(key)
     let symbols = ['*','+','/','.','-'];
+
+    //verify the key is either a number or selected symbol
     if (isNaN(Number(key)) && symbols.includes(key) === false){
         e.preventDefault();
     }
     if (key === "Enter"){
-        console.log("asdf");
         operate(digit.value);
-        
     }
     if (key === "Backspace"){
         deleteDigit();
