@@ -43,15 +43,19 @@ function parseCalc(calc){
     //calculate the entered string as real function. 
     //Safety measures are taken place in operatorKey()
 
-    if (calc.includes("\ 0") || calc.includes("/0")){
+    if (calc.includes("/ 0") || calc.includes("/ 0")){
+        console.log("div 0");
         return "error";
     }
     return new Function ('return ' + calc)();
 }
 
 function numEvent(e) {
-    //append digit
-    digit.value += e.target.value;
+    let num = digit.value;
+    if (!num.includes(".") || e.target.value !== "."){
+        digit.value += e.target.value;
+    }
+    
 }
 
 function cache(op){
@@ -73,10 +77,16 @@ function deleteDigit(){
 
 function operatorKey(e){
     let key = e.key;
-    let symbols = ['*','+','/','.','-'];
+    let symbols = ['*','+','/','-','.'];
+    let hasPeriod = digit.value.includes(".");
+
+    console.log(hasPeriod);
 
     //verify the key is either a number or selected symbol
-    if (isNaN(Number(key)) && symbols.includes(key) === false){
+    if (isNaN(Number(key)) && symbols.includes(key) === false || e.keyCode === 32){
+        e.preventDefault();
+    }
+    if (hasPeriod === true && key === "."){
         e.preventDefault();
     }
     if (key === "Enter"){
@@ -86,8 +96,9 @@ function operatorKey(e){
         deleteDigit();
     }
     if (symbols.includes(key) === true){
-        cache(key);
-        e.preventDefault();
+        if (key !== "."){
+            cache(key);
+        }
     }
     
     
